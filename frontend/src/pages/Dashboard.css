@@ -1,0 +1,319 @@
+/* ── Dashboard Page ──────────────────────────────────────── */
+
+.dashboard-page {
+  min-height: 100vh;
+  background: var(--neu-bg);
+  position: relative;
+  padding-bottom: 60px;
+}
+
+/* Nav */
+
+
+.dash-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Container & Grid */
+.dash-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 32px 40px;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Header Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 24px;
+  grid-template-areas:
+    "main main main"
+    "salary outlook reasoning";
+  margin-bottom: 60px;
+}
+
+.bento-item {
+  padding: 32px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.bento-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--s-raised-lg);
+}
+
+.bento-main {
+  grid-area: main;
+  text-align: center;
+  padding: 60px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--neu-border);
+}
+
+.bento-stat-salary {
+  grid-area: salary;
+}
+
+.bento-stat-outlook {
+  grid-area: outlook;
+}
+
+.bento-reasoning {
+  grid-area: reasoning;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.stat-lbl {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.stat-val {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+
+/* Common Section */
+.dash-section {
+  margin-bottom: 40px;
+}
+
+.p-24 {
+  padding: 24px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+/* Skills & Tech */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge-skill {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+
+.tech-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.tech-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+}
+
+/* Courses */
+.courses-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Projects */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Timeline */
+.sticky-timeline {
+  position: sticky;
+  top: 120px;
+}
+
+.course-platform {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.course-link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent);
+  transition: var(--transition);
+}
+
+.course-link:hover {
+  color: var(--accent-cyan);
+  border-bottom-style: solid;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-phase {
+  display: flex;
+  gap: 24px;
+}
+
+.timeline-dot {
+  width: 36px;
+  height: 36px;
+  background: var(--neu-bg);
+  box-shadow: var(--s-raised-sm);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--accent);
+  z-index: 2;
+  border: 4px solid var(--neu-bg);
+}
+
+.timeline-connector {
+  width: 4px;
+  flex: 1;
+  background: var(--accent);
+  opacity: 0.2;
+  box-shadow: 0 0 10px var(--accent-glow);
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+.timeline-content {
+  flex: 1;
+  border-radius: var(--radius-md);
+  margin-bottom: 32px;
+  transition: var(--transition);
+}
+
+.timeline-content:hover {
+  transform: translateX(10px);
+}
+
+.phase-tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.phase-tasks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.task-check {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.phase-milestone {
+  padding-top: 16px;
+  border-top: 1px dashed rgba(27, 84, 255, 0.25);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.phase-milestone strong {
+  color: var(--accent);
+}
+
+.timeline-end {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky-timeline {
+    position: static;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "main main"
+      "salary outlook"
+      "reasoning reasoning";
+  }
+}
+
+@media (max-width: 860px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "main"
+      "salary"
+      "outlook"
+      "reasoning";
+  }
+
+  .courses-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .dash-container {
+    padding: 24px 16px;
+  }
+
+  .dash-nav-inner {
+    padding: 12px 16px;
+  }
+
+  .timeline-phase {
+    gap: 16px;
+  }
+
+  .timeline-content {
+    padding: 16px;
+  }
+}
