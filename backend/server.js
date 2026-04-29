@@ -10,7 +10,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: ['https://path-forge-ai-pearl.vercel.app', 'http://localhost:5173'],
+  origin: [
+    'https://path-forge-ai-one.vercel.app',
+    'https://path-forge-ai-pearl.vercel.app',
+    'http://localhost:5173'
+  ],
   methods: ['GET', 'POST'],
   credentials: true
 }));
