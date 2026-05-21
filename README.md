@@ -409,4 +409,4 @@ npm run preview  # Preview the build
 
 ## Author
 
-**Md. Aman Ul Haq**
+**Mirza Zaid Furkhan Baig**
