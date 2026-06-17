@@ -3,100 +3,42 @@
 .form-page {
   min-height: 100vh;
   background: var(--neu-bg);
-  position: relative;
-  overflow: hidden;
-  padding: 10px 24px 32px;
+  padding: 16px 24px 48px;
 }
-
 
 .form-container {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
   align-items: start;
-  padding-top: 10px;
+  padding-top: 40px;
 }
 
-/* Left panel */
+/* Left Panel */
 .form-panel-left {
   padding: 20px 0;
   position: sticky;
   top: 32px;
 }
 
-.panel-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 32px;
-}
-
 .panel-title {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: var(--text);
-  line-height: 1.1;
-  margin-bottom: 20px;
-  text-transform: uppercase;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: var(--navy-primary);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 
 .panel-sub {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-light);
-  line-height: 1.7;
+  line-height: 1.6;
   margin-bottom: 32px;
 }
 
-/* Stepper */
-.stepper-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 14px 28px;
-  margin: 0 auto 32px;
-  border-radius: var(--radius-full);
-  background: var(--neu-bg);
-  box-shadow: var(--s-inset-sm);
-  width: fit-content;
-}
-
-.step-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--neu-shadow-dark);
-  transition: var(--transition);
-  box-shadow: var(--s-inset-sm);
-}
-
-.step-dot.active {
-  background: var(--accent);
-  box-shadow: 0 0 15px var(--accent-glow);
-  transform: scale(1.2);
-}
-
-/* Animations */
-.fade-in {
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Feature list */
 .panel-features {
   display: flex;
   flex-direction: column;
@@ -107,104 +49,128 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 18px;
+  padding: 12px 18px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--neu-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   font-size: 0.9rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--navy-primary);
   transition: var(--transition);
 }
 
 .panel-feature-item:hover {
-  background: rgba(27, 84, 255, 0.1);
-  border-color: var(--accent);
+  border-color: var(--navy-primary);
+  background: var(--navy-light);
 }
 
-/* Form Layout Refinements */
+/* Stepper Indicator */
+.stepper-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  margin: 0 auto 24px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  width: fit-content;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--navy-light);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.step-dot.active {
+  background: var(--navy-primary);
+  border-color: var(--navy-primary);
+  transform: scale(1.1);
+}
+
+/* Form Card */
 .form-card {
-  padding: 56px 48px;
+  padding: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .form-card-title {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin-bottom: 12px;
-  letter-spacing: -1px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--navy-primary);
+  letter-spacing: -0.02em;
 }
 
 .form-card-sub {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 40px;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 32px;
 }
 
 .fields {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  /* Sophisticated vertical rhythm */
+  gap: 24px;
 }
 
 .field-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  /* Tighter alignment with input */
 }
 
 .field-label {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-primary);
   display: flex;
   align-items: center;
-  gap: 10px;
-  /* Spacing for the icon */
-  margin-bottom: 0;
+  gap: 8px;
 }
 
-/* Enhancing Icons in labels */
-.field-label span {
-  font-size: 1.25rem;
-  opacity: 0.9;
+/* Specific Select & Textarea Styles */
+.neu-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230A192F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px !important;
+  cursor: pointer;
 }
 
-.neu-input {
-  padding: 16px 22px;
-  font-size: 1.05rem;
+.neu-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Error Alert Box */
+.error-box {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(155, 44, 44, 0.05);
+  border: 1px solid rgba(155, 44, 44, 0.2);
+  color: var(--accent-high);
+  font-size: 0.85rem;
   font-weight: 600;
-  border: 1px solid var(--neu-border);
-  background: var(--neu-bg);
-  border-radius: var(--radius-md);
-  color: #fff;
-  width: 80%;
-  box-shadow: var(--s-inset-sm);
-  transition: var(--transition);
 }
 
-.neu-input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: var(--s-inset), 0 0 10px var(--accent-glow);
-}
-
-.loading-hint {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  text-align: center;
-  margin-top: 24px;
-  line-height: 1.6;
-}
-
-
-/* Responsive */
+/* Responsive Overrides */
 @media (max-width: 860px) {
   .form-container {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
-
   .form-panel-left {
     position: static;
   }
@@ -212,10 +178,9 @@
 
 @media (max-width: 480px) {
   .form-card {
-    padding: 28px 20px;
+    padding: 24px;
   }
-
   .form-page {
-    padding: 20px 16px;
+    padding: 16px;
   }
 }

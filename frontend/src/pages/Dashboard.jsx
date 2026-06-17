@@ -34,12 +34,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-      <div className="orb orb-pink" />
-      <div className="neon-bg-element" style={{ top: '15%', left: '-5%', transform: 'rotate(-5deg)', opacity: 0.2 }} />
-      <div className="neon-bg-element" style={{ bottom: '20%', right: '-5%', transform: 'rotate(8deg)', opacity: 0.15 }} />
-      <div className="neon-bg-element" style={{ top: '15%', left: '-5%', transform: 'rotate(-5deg)', opacity: 0.3 }} />
-      <div className="neon-bg-element" style={{ bottom: '25%', right: '-5%', transform: 'rotate(12deg)', opacity: 0.2 }} />
-      
       {/* ── Header ────────────────────────────── */}
       <header className="header-container">
         <div className="floating-logo" onClick={() => navigate('/')}>

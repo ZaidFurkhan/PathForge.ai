@@ -3,27 +3,14 @@
 .dashboard-page {
   min-height: 100vh;
   background: var(--neu-bg);
-  position: relative;
   padding-bottom: 60px;
-}
-
-/* Nav */
-
-
-.dash-nav-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 16px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 /* Container & Grid */
 .dash-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 32px 40px;
+  padding: 40px 24px;
 }
 
 .dash-grid {
@@ -37,34 +24,35 @@
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
   gap: 24px;
   grid-template-areas:
     "main main main"
     "salary outlook reasoning";
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 
 .bento-item {
-  padding: 32px;
-  text-align: left;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: var(--transition);
 }
 
 .bento-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--s-raised-lg);
+  transform: translateY(-2px);
+  border-color: var(--navy-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .bento-main {
   grid-area: main;
-  text-align: center;
-  padding: 60px 40px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--neu-border);
+  text-align: left;
+  padding: 40px 48px;
 }
 
 .bento-stat-salary {
@@ -79,29 +67,54 @@
   grid-area: reasoning;
 }
 
-.stat-icon {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-}
-
-.stat-lbl {
+.dash-greeting {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.dash-role {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--navy-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.dash-role-desc {
+  font-size: 1rem;
+  color: var(--text-light);
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.stat-lbl {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--text-muted);
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
 }
 
 .stat-val {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  color: var(--text);
-  line-height: 1.2;
+  color: var(--navy-primary);
+  line-height: 1.25;
 }
 
-
-/* Common Section */
+/* Sections */
 .dash-section {
   margin-bottom: 40px;
 }
@@ -114,50 +127,45 @@
   padding: 20px;
 }
 
-/* Skills & Tech */
+/* Skills */
 .skills-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .badge-skill {
-  font-size: 0.9rem;
-  padding: 8px 16px;
+  font-size: 0.85rem;
+  padding: 6px 14px;
 }
 
 .tech-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
 }
 
 .tech-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 12px 16px;
+  background: var(--neu-bg);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
 }
 
-/* Courses */
-.courses-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-/* Projects */
-.projects-list {
+.tech-info {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2px;
 }
 
-/* Timeline */
-.sticky-timeline {
-  position: sticky;
-  top: 120px;
+/* Courses Grid */
+.courses-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .course-platform {
@@ -168,16 +176,27 @@
 }
 
 .course-link {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px dashed var(--accent);
+  color: var(--navy-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: var(--transition);
 }
 
 .course-link:hover {
-  color: var(--accent-cyan);
-  border-bottom-style: solid;
-  box-shadow: 0 0 10px var(--accent-glow);
+  opacity: 0.8;
+}
+
+/* Projects Stack */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Timeline Layout */
+.sticky-timeline {
+  position: sticky;
+  top: 40px;
 }
 
 .timeline-container {
@@ -187,95 +206,99 @@
 
 .timeline-phase {
   display: flex;
-  gap: 24px;
+  gap: 20px;
+}
+
+.timeline-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .timeline-dot {
-  width: 36px;
-  height: 36px;
-  background: var(--neu-bg);
-  box-shadow: var(--s-raised-sm);
+  width: 32px;
+  height: 32px;
+  background: var(--navy-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #FFFFFF;
   z-index: 2;
-  border: 4px solid var(--neu-bg);
 }
 
 .timeline-connector {
-  width: 4px;
+  width: 2px;
   flex: 1;
-  background: var(--accent);
-  opacity: 0.2;
-  box-shadow: 0 0 10px var(--accent-glow);
+  background: var(--border-color);
   margin: 4px 0;
-  border-radius: 4px;
 }
 
 .timeline-content {
   flex: 1;
+  background: var(--neu-bg);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   transition: var(--transition);
 }
 
 .timeline-content:hover {
-  transform: translateX(10px);
+  transform: translateX(4px);
+  border-color: var(--navy-primary);
 }
 
 .phase-tasks {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .phase-tasks li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.95rem;
-  color: var(--text);
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--navy-medium);
   line-height: 1.5;
 }
 
 .task-check {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .phase-milestone {
-  padding-top: 16px;
-  border-top: 1px dashed rgba(27, 84, 255, 0.25);
-  font-size: 0.9rem;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.85rem;
   color: var(--text-light);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .phase-milestone strong {
-  color: var(--accent);
+  color: var(--navy-primary);
+  font-weight: 700;
 }
 
 .timeline-end {
   display: flex;
   align-items: center;
+  margin-top: 8px;
 }
 
-/* Responsive */
+/* Responsive Overrides */
 @media (max-width: 1100px) {
   .dash-grid {
     grid-template-columns: 1fr;
   }
-
   .sticky-timeline {
     position: static;
   }
-
   .bento-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -285,7 +308,7 @@
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 768px) {
   .bento-grid {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -294,26 +317,19 @@
       "outlook"
       "reasoning";
   }
-
   .courses-list {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 600px) {
   .dash-container {
     padding: 24px 16px;
   }
-
-  .dash-nav-inner {
-    padding: 12px 16px;
+  .bento-main {
+    padding: 24px;
   }
-
   .timeline-phase {
-    gap: 16px;
-  }
-
-  .timeline-content {
-    padding: 16px;
+    gap: 12px;
   }
 }

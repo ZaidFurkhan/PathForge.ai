@@ -29,7 +29,30 @@ app.post('/api/generate-roadmap', async (req, res) => {
   }
 
   const prompt = `
-You are an expert career counselor and roadmap planner AI. Based on the student profile below, generate a detailed, personalized career roadmap.
+You are an expert career counselor and roadmap planner AI. Based on the student profile below, generate a highly personalised, realistic career roadmap.
+
+STRICT RULES — follow every rule or the output is invalid:
+
+1. RESPECT THE CAREER GOAL EXACTLY. If the student wants to be a Singer, Dancer, Chef, Doctor, Athlete, Artist, or anything else — build the roadmap for THAT career. Do NOT redirect them to tech or an unrelated field.
+
+2. "technologies" should list tools, software, instruments, apps, or equipment RELEVANT to the chosen career. For a Singer: DAWs (GarageBand, Audacity), mic types, SoundCloud, Spotify for Artists. For a Chef: cooking equipment, recipe apps. NOT programming languages unless the goal is software.
+
+3. "projects" must be HANDS-ON real activities for the career. For a Singer: record a demo, perform at open mic, launch a YouTube channel. For a Chef: cook a 3-course meal, host a dinner pop-up. Include exactly 5 projects.
+
+4. "roadmap" phases must be DYNAMIC — between 3 and 6 phases total, with a REALISTIC total timeline:
+   - A singer: 1–2 years
+   - A web developer: 6–10 months
+   - A doctor: use years (e.g., "Year 1–2")
+   - A chef: 1–2 years
+   Never default to a fixed 8-month / 4-phase structure.
+
+5. Course URLs MUST be search-page URLs that always work. Use these exact formats:
+   - YouTube:  https://www.youtube.com/results?search_query=topic+keywords
+   - Udemy:    https://www.udemy.com/courses/search/?q=topic+keywords
+   - Coursera: https://www.coursera.org/search?query=topic+keywords
+   Encode spaces as + signs. NEVER use direct course links that may break.
+
+6. Be honest about competitive careers (music, acting, sports). Do not over-promise income or outcomes.
 
 Student Profile:
 - Name: ${name}
@@ -38,108 +61,121 @@ Student Profile:
 - Current Skills: ${currentSkills}
 - Career Goal: ${careerGoal}
 
-Generate a comprehensive, actionable career roadmap. Return ONLY a valid JSON object with NO markdown, NO code fences, NO extra text. Use EXACTLY this structure:
+Return ONLY a valid JSON object. No markdown. No code fences. No extra text. Use EXACTLY this structure:
 
 {
   "careerRecommendation": {
-    "title": "Specific job title/role",
-    "description": "3-4 sentence description of this career path",
-    "reasoning": "2-3 sentences explaining why this is recommended for this specific student based on their profile",
-    "averageSalary": "e.g., $70,000 - $120,000/year",
-    "jobOutlook": "e.g., Excellent (15% growth expected)"
+    "title": "Specific role aligned with career goal",
+    "description": "3–4 sentences describing this career and what it involves day-to-day",
+    "reasoning": "2–3 sentences explaining why this is a good fit based on the student's profile",
+    "averageSalary": "Realistic salary range, e.g. $25,000 – $80,000/year or Highly variable",
+    "jobOutlook": "Honest outlook, e.g. Competitive but growing (8% growth expected)"
   },
   "skillsToLearn": [
-    "Skill 1",
-    "Skill 2",
-    "Skill 3",
-    "Skill 4",
-    "Skill 5",
-    "Skill 6"
+    "6 to 8 specific, relevant skills for this career"
   ],
   "technologies": [
-    { "name": "Technology Name", "category": "e.g., Programming Language / Framework / Tool / Database", "priority": "High" },
-    { "name": "Technology Name", "category": "category", "priority": "Medium" },
-    { "name": "Technology Name", "category": "category", "priority": "Low" }
+    { "name": "Tool/App/Instrument/Software name", "category": "Relevant category for this career", "priority": "High" },
+    { "name": "Tool/App/Instrument/Software name", "category": "category", "priority": "High" },
+    { "name": "Tool/App/Instrument/Software name", "category": "category", "priority": "Medium" },
+    { "name": "Tool/App/Instrument/Software name", "category": "category", "priority": "Medium" },
+    { "name": "Tool/App/Instrument/Software name", "category": "category", "priority": "Low" }
   ],
   "projects": [
     {
-      "name": "Project Name",
-      "description": "2-3 sentence description of the project and what it demonstrates",
+      "name": "Hands-on activity or project name",
+      "description": "2–3 sentences on what this involves and what it proves",
       "skills": ["skill1", "skill2", "skill3"],
       "difficulty": "Beginner",
-      "estimatedTime": "e.g., 1-2 weeks"
+      "estimatedTime": "1–2 weeks"
     },
     {
-      "name": "Project Name",
+      "name": "Project name",
+      "description": "description",
+      "skills": ["skill1", "skill2"],
+      "difficulty": "Beginner",
+      "estimatedTime": "2–3 weeks"
+    },
+    {
+      "name": "Project name",
       "description": "description",
       "skills": ["skill1", "skill2"],
       "difficulty": "Intermediate",
-      "estimatedTime": "e.g., 3-4 weeks"
+      "estimatedTime": "1 month"
     },
     {
-      "name": "Project Name",
+      "name": "Project name",
+      "description": "description",
+      "skills": ["skill1", "skill2"],
+      "difficulty": "Intermediate",
+      "estimatedTime": "4–6 weeks"
+    },
+    {
+      "name": "Project name",
       "description": "description",
       "skills": ["skill1", "skill2"],
       "difficulty": "Advanced",
-      "estimatedTime": "e.g., 6-8 weeks"
+      "estimatedTime": "2–3 months"
     }
   ],
   "courses": [
     {
-      "title": "Specific Course Title",
-      "platform": "Platform Name",
-      "url": "https://www.coursera.org/learn/specific-course-name",
-      "description": "1-2 sentence description of what you'll learn",
+      "title": "Descriptive resource title for this career",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=relevant+career+topic",
+      "description": "What the student will learn from this resource",
       "level": "Beginner",
+      "free": true
+    },
+    {
+      "title": "Course title",
+      "platform": "Udemy",
+      "url": "https://www.udemy.com/courses/search/?q=relevant+career+topic",
+      "description": "description",
+      "level": "Intermediate",
+      "free": false
+    },
+    {
+      "title": "Course title",
+      "platform": "Coursera",
+      "url": "https://www.coursera.org/search?query=relevant+career+topic",
+      "description": "description",
+      "level": "Intermediate",
+      "free": false
+    },
+    {
+      "title": "Course title",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=advanced+career+topic",
+      "description": "description",
+      "level": "Advanced",
       "free": true
     }
   ],
   "roadmap": [
     {
       "phase": 1,
-      "title": "Foundation Phase",
-      "duration": "e.g., Month 1-2",
+      "title": "Phase title specific to this career",
+      "duration": "Realistic duration, e.g. Month 1–3 or Year 1",
       "tasks": [
         "Specific actionable task 1",
         "Specific actionable task 2",
-        "Specific actionable task 3"
+        "Specific actionable task 3",
+        "Specific actionable task 4"
       ],
-      "milestone": "What you will have achieved by the end of this phase"
-    },
-    {
-      "phase": 2,
-      "title": "Building Skills Phase",
-      "duration": "Month 3-4",
-      "tasks": ["task1", "task2", "task3"],
-      "milestone": "milestone description"
-    },
-    {
-      "phase": 3,
-      "title": "Hands-On Practice Phase",
-      "duration": "Month 5-6",
-      "tasks": ["task1", "task2", "task3"],
-      "milestone": "milestone description"
-    },
-    {
-      "phase": 4,
-      "title": "Portfolio & Job Readiness Phase",
-      "duration": "Month 7-8",
-      "tasks": ["task1", "task2", "task3"],
-      "milestone": "milestone description"
+      "milestone": "Concrete, measurable achievement by end of this phase"
     }
   ]
 }
 
-Make all recommendations specific, practical, and tailored to the student's profile. 
-CRITICAL: Every course MUST have a REAL, FUNCTIONAL URL. DO NOT provide placeholders like '...' or generic domains. If the specific link is unknown, provide the exact search results URL for that course on its platform (e.g., https://www.udemy.com/courses/search/?q=Python).
-Be encouraging and realistic.`;
+REMEMBER: Generate 3–6 roadmap phases. Total duration must be realistic for the career. All course URLs must be search-page URLs. Everything must be specific to the stated career goal.`;
 
   try {
     const chatCompletion = await groq.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: "You are an expert career counselor and roadmap planner AI. Output pure raw JSON matching the requested structure perfectly. Do NOT output markdown code fences like ```json."
+          content: "You are an expert career counselor and roadmap planner AI. Output pure raw JSON matching the requested structure perfectly. Do NOT output markdown code fences. Respect the student's career goal exactly — if they want to be a singer, chef, athlete, or anything else, build for that career."
         },
         {
           role: "user",
@@ -154,14 +190,12 @@ Be encouraging and realistic.`;
 
     let parsedData;
     try {
-      // Robust JSON extraction to ignore any conversational fluff
       let cleanedText = text;
       const startIndex = cleanedText.indexOf('{');
       const endIndex = cleanedText.lastIndexOf('}');
       if (startIndex !== -1 && endIndex !== -1) {
         cleanedText = cleanedText.slice(startIndex, endIndex + 1);
       }
-      
       parsedData = JSON.parse(cleanedText);
     } catch (parseErr) {
       console.error('JSON parse error:', parseErr.message);
