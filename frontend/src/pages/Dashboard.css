@@ -11,6 +11,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 24px;
+  margin-top: 3.8rem;
 }
 
 .dash-grid {
@@ -63,8 +64,25 @@
   grid-area: outlook;
 }
 
+.bento-stat-salary .stat-val {
+  font-weight: 350;
+}
+
+.bento-stat-outlook .stat-val {
+  font-weight: 350;
+}
+
 .bento-reasoning {
   grid-area: reasoning;
+}
+
+.bento-reasoning p {
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+.bento-reasoning .stat-lbl {
+  color: var(--text);
 }
 
 .dash-greeting {
@@ -296,9 +314,11 @@
   .dash-grid {
     grid-template-columns: 1fr;
   }
+
   .sticky-timeline {
     position: static;
   }
+
   .bento-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -317,6 +337,7 @@
       "outlook"
       "reasoning";
   }
+
   .courses-list {
     grid-template-columns: 1fr;
   }
@@ -326,9 +347,11 @@
   .dash-container {
     padding: 24px 16px;
   }
+
   .bento-main {
     padding: 24px;
   }
+
   .timeline-phase {
     gap: 12px;
   }

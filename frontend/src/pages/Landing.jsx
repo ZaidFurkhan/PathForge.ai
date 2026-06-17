@@ -5,6 +5,7 @@ import './Landing.css'
 export default function Landing() {
   const navigate = useNavigate()
   const [activePersona, setActivePersona] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const personas = [
     {
@@ -61,9 +62,17 @@ export default function Landing() {
           <span className="gradient-text">PathForge</span>
         </div>
 
-        <nav className="header-nav">
-          <a href="#about-us" className="nav-link">About Us</a>
-          <a href="#how-it-works" className="nav-link">How it Works</a>
+        <button 
+          className="mobile-menu-btn" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileMenuOpen ? '✕' : '☰'}
+        </button>
+
+        <nav className={`header-nav ${isMobileMenuOpen ? 'open' : ''}`}>
+          <a href="#about-us" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
+          <a href="#how-it-works" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>How it Works</a>
         </nav>
       </header>
 
@@ -216,7 +225,7 @@ export default function Landing() {
           <span className="logo-icon">⚡</span>
           <span className="gradient-text">PathForge</span>
         </span>
-        <p>Built with Advanced AI · {new Date().getFullYear()}</p>
+        <p>© 2026 PathForge. All rights reserved.</p>
       </footer>
     </div >
   )
