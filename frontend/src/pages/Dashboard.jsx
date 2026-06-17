@@ -11,12 +11,12 @@ export default function Dashboard() {
     try {
       const storedData = sessionStorage.getItem('roadmap')
       const storedName = sessionStorage.getItem('userName')
-      
+
       if (!storedData) {
         navigate('/')
         return
       }
-      
+
       setData(JSON.parse(storedData))
       setUserName(storedName || 'Explorer')
     } catch (err) {
@@ -34,12 +34,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-      <div className="orb orb-pink" />
-      <div className="neon-bg-element" style={{ top: '15%', left: '-5%', transform: 'rotate(-5deg)', opacity: 0.2 }} />
-      <div className="neon-bg-element" style={{ bottom: '20%', right: '-5%', transform: 'rotate(8deg)', opacity: 0.15 }} />
-      <div className="neon-bg-element" style={{ top: '15%', left: '-5%', transform: 'rotate(-5deg)', opacity: 0.3 }} />
-      <div className="neon-bg-element" style={{ bottom: '25%', right: '-5%', transform: 'rotate(12deg)', opacity: 0.2 }} />
-      
       {/* ── Header ────────────────────────────── */}
       <header className="header-container">
         <div className="floating-logo" onClick={() => navigate('/')}>
@@ -55,7 +49,7 @@ export default function Dashboard() {
       </header>
 
       <main className="dash-container">
-        
+
         {/* Header Section - Bento Grid */}
         <header className="dash-header bento-grid slide-up-d1">
           <div className="bento-item bento-main neu-card">
@@ -88,10 +82,10 @@ export default function Dashboard() {
         </header>
 
         <div className="dash-grid">
-          
+
           {/* Left Column */}
           <div className="dash-col-left">
-            
+
             {/* Skills & Technologies */}
             <section className="dash-section slide-up-d2">
               <div className="section-heading">
@@ -104,9 +98,9 @@ export default function Dashboard() {
                     <span key={skill} className="badge badge-skill">{skill}</span>
                   ))}
                 </div>
-                
+
                 <div className="divider" />
-                
+
                 <h3 style={{ fontSize: '1.1rem', marginBottom: '16px' }}>Technologies</h3>
                 <div className="tech-list">
                   {data?.technologies?.map(tech => (
@@ -152,7 +146,7 @@ export default function Dashboard() {
                 ))}
               </div>
             </section>
-            
+
             {/* Project Ideas */}
             <section className="dash-section slide-up-d4">
               <div className="section-heading">
@@ -176,7 +170,7 @@ export default function Dashboard() {
                       ))}
                     </div>
                     <div className="text-accent fw-600" style={{ fontSize: '0.85rem' }}>
-                      <span style={{ marginRight: '6px' }}>⏱️</span> 
+                      <span style={{ marginRight: '6px' }}>⏱️</span>
                       Estimated time: {proj.estimatedTime}
                     </div>
                   </div>
@@ -193,7 +187,7 @@ export default function Dashboard() {
                 <div className="icon-box">🗺️</div>
                 <h2>Your Step-by-step Plan</h2>
               </div>
-              
+
               <div className="neu-card p-24">
                 <div className="timeline-container">
                   {data?.roadmap?.map((phase, i) => (
@@ -202,13 +196,13 @@ export default function Dashboard() {
                         <div className="timeline-dot">{phase.phase}</div>
                         {i < data.roadmap.length - 1 && <div className="timeline-connector" />}
                       </div>
-                      
+
                       <div className="timeline-content neu-inset-sm p-20">
                         <div className="flex justify-between items-center wrap gap-8" style={{ marginBottom: '12px' }}>
                           <h3 className="fw-700 text-accent" style={{ fontSize: '1.2rem' }}>{phase.title}</h3>
                           <span className="badge">{phase.duration}</span>
                         </div>
-                        
+
                         <ul className="phase-tasks">
                           {phase?.tasks?.map((task, tIdx) => (
                             <li key={tIdx}>
@@ -217,17 +211,17 @@ export default function Dashboard() {
                             </li>
                           ))}
                         </ul>
-                        
+
                         <div className="phase-milestone">
                           <strong>Milestone:</strong> {phase.milestone}
                         </div>
                       </div>
                     </div>
                   ))}
-                  
+
                   <div className="timeline-end">
                     <div className="timeline-dot" style={{ background: 'var(--neu-bg)', color: 'var(--accent)', border: '2px solid var(--accent)' }}>🎉</div>
-                    <div className="fw-700" style={{ marginLeft: '20px', fontSize: '1.1rem' }}>Job Ready!</div>
+                    <div className="fw-700" style={{ marginLeft: '20px', fontSize: '1.1rem' }}>Goal Achieved!</div>
                   </div>
                 </div>
               </div>
@@ -236,7 +230,7 @@ export default function Dashboard() {
 
         </div>
       </main>
-      
+
       {/* Footer */}
       <footer className="footer slide-up-d6" style={{ marginTop: '60px' }}>
         <button className="back-to-top" onClick={() => window.scrollTo(0, 0)}>

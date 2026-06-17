@@ -88,9 +88,6 @@ export default function Form() {
 
   return (
     <div className="form-page">
-      <div className="orb orb-purple" />
-      <div className="orb orb-pink" />
-
       {/* ── Header ────────────────────────────── */}
       <header className="header-container">
         <div className="floating-logo" onClick={() => navigate('/')}>

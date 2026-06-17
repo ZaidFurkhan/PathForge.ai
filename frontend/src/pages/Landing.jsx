@@ -5,6 +5,7 @@ import './Landing.css'
 export default function Landing() {
   const navigate = useNavigate()
   const [activePersona, setActivePersona] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const personas = [
     {
@@ -54,13 +55,6 @@ export default function Landing() {
 
   return (
     <div className="landing">
-      {/* Decorative orbs */}
-      <div className="orb orb-purple" />
-      <div className="orb orb-pink" />
-      <div className="orb orb-green" />
-      <div className="neon-bg-element" style={{ top: '20%', left: '-10%', transform: 'rotate(-15deg)' }} />
-      <div className="neon-bg-element" style={{ bottom: '30%', right: '-10%', transform: 'rotate(10deg)' }} />
-
       {/* ── Header ────────────────────────────── */}
       <header className="header-container">
         <div className="floating-logo" onClick={() => navigate('/')}>
@@ -68,32 +62,22 @@ export default function Landing() {
           <span className="gradient-text">PathForge</span>
         </div>
 
-        <nav className="header-nav">
-          <a href="#about-us" className="nav-link">About Us</a>
-          <a href="#how-it-works" className="nav-link">How it Works</a>
+        <button 
+          className="mobile-menu-btn" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileMenuOpen ? '✕' : '☰'}
+        </button>
+
+        <nav className={`header-nav ${isMobileMenuOpen ? 'open' : ''}`}>
+          <a href="#about-us" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
+          <a href="#how-it-works" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>How it Works</a>
         </nav>
       </header>
 
       {/* ── Hero ─────────────────────────────── */}
       <section className="hero">
-        <div className="hero-beams">
-          <div className="beam beam-1" />
-          <div className="beam beam-2" />
-          <div className="beam beam-3" />
-        </div>
-        <div className="hero-aura" />
-
-        {/* Light Streak Particles */}
-        <div className="particle-container">
-          <div className="particle" style={{ left: '10%', animationDelay: '0s' }} />
-          <div className="particle" style={{ left: '25%', animationDelay: '2s' }} />
-          <div className="particle" style={{ left: '40%', animationDelay: '1s' }} />
-          <div className="particle" style={{ left: '55%', animationDelay: '4s' }} />
-          <div className="particle" style={{ left: '70%', animationDelay: '3s' }} />
-          <div className="particle" style={{ left: '85%', animationDelay: '5s' }} />
-          <div className="particle" style={{ left: '95%', animationDelay: '1.5s' }} />
-        </div>
-
         <div className="pill-badge slide-up">
           <span className="badge-dot" />
           AI Roadmap Engine v2.0
@@ -152,7 +136,7 @@ export default function Landing() {
                   <div className="demo-phases">
                     {p.phases.map((phase, i) => (
                       <div key={phase} className="demo-phase">
-                        <div className="demo-phase-dot" style={{ background: i < p.progress ? 'var(--g-accent)' : 'var(--neu-shadow-dark)' }} />
+                        <div className="demo-phase-dot" style={{ background: i < p.progress ? 'var(--navy-primary)' : 'var(--border-color)' }} />
                         <span style={{ color: i < p.progress ? 'var(--text)' : 'var(--text-muted)', fontWeight: i < p.progress ? 600 : 400 }}>{phase}</span>
                         {i < p.progress && <span className="demo-check">✓</span>}
                       </div>
@@ -241,7 +225,7 @@ export default function Landing() {
           <span className="logo-icon">⚡</span>
           <span className="gradient-text">PathForge</span>
         </span>
-        <p>Built with Advanced AI · {new Date().getFullYear()}</p>
+        <p>© 2026 PathForge. All rights reserved.</p>
       </footer>
     </div >
   )
